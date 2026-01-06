@@ -20,16 +20,10 @@ export const fetchMovies = async ({
     : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
   const response = await axios.get(endpoint, {
-    method: "GET",
     headers: TMDB_CONFIG.headers,
   });
 
-  if (!response.data) {
-    // @ts-ignore
-    throw new Error("Failed to fetch movies", response.statusText);
-  }
+  if (!response.data) throw new Error("Failed to fetch movies");
 
-  const data = await response.data;
-
-  return data.results;
+  return response.data.results;
 };
