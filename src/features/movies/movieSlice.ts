@@ -76,6 +76,13 @@ const initialState: InitialState = {
   showsError: null,
 };
 
+// NOTE: Left here for reference on how to use reducers with createSlice
+// reducers: {
+//   addMovies: (state, action) => {
+//     state.movies = action.payload;
+//   },
+// },
+
 const movieSlice = createSlice({
   name: "movies",
   initialState,
