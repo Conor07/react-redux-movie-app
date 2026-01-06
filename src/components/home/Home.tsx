@@ -1,31 +1,25 @@
 import React, { useEffect } from "react";
 import MovieListing from "../MovieListing/MovieListing";
-import useFetch from "../../common/hooks/usefetch";
-import { fetchMovies } from "../../common/apis/api";
 import { useDispatch } from "react-redux";
-import { addMovies } from "../../features/movies/movieSlice";
+import {
+  fetchAsyncMovies,
+  fetchAsyncShows,
+} from "../../features/movies/movieSlice";
+import type { AppDispatch } from "../../features/store";
 
 type HomeProps = {};
 
 const Home: React.FC<HomeProps> = ({}) => {
-  const {
-    data: movies,
-    loading,
-    error,
-    refetch: loadFilms,
-    reset,
-  } = useFetch(() => fetchMovies({ searchQuery: undefined }), true);
-
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    if (movies) dispatch(addMovies(movies));
-  }, [movies, dispatch]);
+    dispatch(fetchAsyncMovies());
+
+    dispatch(fetchAsyncShows());
+  }, [dispatch]);
 
   return (
     <div className="Home">
-      {error && <div className="Error">There has been an error</div>}
-
       <div className="BannerImg">Home</div>
 
       <MovieListing />
