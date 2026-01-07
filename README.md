@@ -1,4 +1,5 @@
 # React Redux Movie App
 
-Tutorial video part 1:
+Tutorial videos:
 https://www.youtube.com/watch?v=EnIRyNT2PMI
+https://www.youtube.com/watch?v=FeYTMsWpgQo

@@ -1,0 +1,42 @@
+@import "../../common/colors.scss";
+
+.MovieDetails {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: $secondary-color;
+  border-radius: 10px;
+  margin: 20px 0;
+
+  .MovieDetailsLoading {
+    color: $font-secondary;
+    text-align: center;
+  }
+
+  .MovieDetailsError {
+    color: $font-secondary;
+    text-align: center;
+  }
+
+  .DetailsContainer {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin: 0 0 20px 0;
+      color: $font-primary;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      align-self: center;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: $font-secondary;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import type { Movie, Show } from "../../features/movies/movieSlice";
 import "./movieCard.scss";
+import { Link } from "react-router-dom";
 
 type MovieCardProps = {
   movieData?: Movie;
@@ -40,6 +41,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ movieData, showData }) => {
   return (
     <div className="MovieCard">
       <div className="MovieCardInner">
+        <Link
+          to={
+            movieData
+              ? `/details/movie/${movieData.id}`
+              : showData
+              ? `/details/show/${showData.id}`
+              : "#"
+          }
+        />
+
         <div className="CardTop">
           <img
             src={
