@@ -27,10 +27,12 @@ const MovieDetail: React.FC<MovieDetailProps> = ({}) => {
   const detailsError = useSelector(getDetailsError);
 
   useEffect(() => {
-    if (id) {
+    const parsedId = id ? parseInt(id, 10) : null;
+
+    if (parsedId && !detailsLoading && (!details || details.id !== parsedId)) {
       dispatch(
         fetchAsyncMovieOrShowDetails({
-          id: parseInt(id, 10),
+          id: parsedId,
           isMovie: isMovie === "movie",
         })
       );

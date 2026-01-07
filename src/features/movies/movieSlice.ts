@@ -35,7 +35,7 @@ export const fetchAsyncShows = createAsyncThunk<Show[]>(
 export const fetchAsyncMovieOrShowDetails = createAsyncThunk<
   Movie | Show,
   { id: number; isMovie: boolean },
-  { rejectValue: string }
+  { rejectValue: string; state: RootState }
 >(
   "movies/fetchAsyncMovieOrShowDetails",
   async ({ id, isMovie }, { rejectWithValue }) => {
@@ -50,6 +50,13 @@ export const fetchAsyncMovieOrShowDetails = createAsyncThunk<
     } catch (err) {
       return rejectWithValue("Failed to fetch details");
     }
+  },
+  {
+    condition: (_arg, { getState }) => {
+      const state = getState() as RootState;
+      // skip if already loading
+      return !state.movies.detailsLoading;
+    },
   }
 );
 
